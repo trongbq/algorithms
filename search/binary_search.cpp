@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 // O(log n)
 int binarySearch(int arr[], int l, int h, int x) {
     if (h >= l) {
