@@ -55,7 +55,7 @@ struct CircularBuffer {
             return val;
         }
 
-        return -1;
+        return ABSENT_VALUE;
     }
 
     void display() {
