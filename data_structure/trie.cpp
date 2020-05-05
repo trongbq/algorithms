@@ -23,26 +23,46 @@ void insert(TreeNode *node, string s) {
     
     for (int i = 0; i < s.size(); i++) {
         int index = ((int) s[i]) - 97;
-        cout << index << endl;
+
         if (!currNode->children[index]) {
             currNode->children[index] = new TreeNode();
         }
         currNode = currNode->children[index];
     }
     
+    // Mark final node to be the end of a word
     currNode->isEnd = true;
+}
+
+bool search(TreeNode *root, string s) {
+    TreeNode *currNode = root;
+    
+    for (int i = 0; i < s.size(); i++) {
+        int index = ((int) s[i]) - 97;
+        
+        if (!currNode->children[index]) {
+            return false;
+        }
+        currNode = currNode->children[index];
+    }
+    
+    return currNode->isEnd;
 }
 
 int main()
 {
     vector<string> s{"hello", "morning", "hour", "heath", "meeting", "heli"};
-    TreeNode root = TreeNode();
-
+    
+    cout << "Inserting into trie..." << endl;
+    TreeNode *root = new TreeNode();
     for (int i = 0; i < s.size(); i++) {
-        insert(&root, s[i]);
+        insert(root, s[i]);
     }
     
-    cout << root.children[7]->children[4]->children[11]->children[11]->isEnd << endl;
+    bool f1 = search(root, "hour");
+    cout << (f1 ? "Found" : "Not found") << " `hour` in the trie!" << endl;
+    bool f2 = search(root, "honest");
+    cout << (f2 ? "Found" : "Not found") << " `honest` in the trie!" << endl;
     
     return 0;
 }
