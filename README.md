@@ -19,7 +19,7 @@
 2. [Dijkstra](graph/dijkstra.cpp)
 
 ## Dynamic Programing
-1. [Longest Common Sequence](others/longest_common_sequence.cpp)
+1. [Longest Common Sequence](dynamic_programing/longest_common_sequence.cpp)
 
 ## Others
 1. [Factorial](others/factorial.cpp)
